@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name = "GirardProxyScraper",
     version = "0.9.0",
-    author = "Andrew Carter",
+    author = "Girard",
     author_email = "girardhappy.it@gmail.com",
     description = ("Python module that scrape retrive working proxy addresses"),
     license = "MIT",
