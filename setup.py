@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "GirardProxy",
-    version = "0.9.2",
+    version = "0.9.3",
     author = "Girard",
     author_email = "girardhappy.it@gmail.com",
     description = ("Python module that scrape and retrive working proxy addresses"),
