@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "GirardProxyScraper",
+    name = "GirardProxy",
     version = "0.9.0",
     author = "Girard",
     author_email = "girardhappy.it@gmail.com",
