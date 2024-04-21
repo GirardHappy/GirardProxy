@@ -85,9 +85,9 @@ class Proxy():
         if not anonimity in ['elite','anonymous','transparent','all']:
             raise Proxy.ProxyError("anonimity must be ['elite','anonymous','transparent','all']")
     
-    def __proxywork(host,port,ip_data):
+    def __proxywork(host,port,ip_data,protocol):
         try:
-            requests.get('https://api.ipify.org', proxies=dict(http=f'socks5://{host}:{port}',https=f'socks5://{host}:{port}'),timeout=0.5)
+            requests.get('https://api.ipify.org', proxies=dict(http=f'{protocol}://{host}:{port}',https=f'{protocol}://{host}:{port}'),timeout=0.5)
             return host,port,ip_data,False
         except:
             return None,None,None,True
@@ -95,7 +95,7 @@ class Proxy():
     def __requestProxy(self):
         r = requests.get(self.__options.get('url')).json()
         for prox in r.get('proxies'):
-            t = Proxy.__ReturnValueThread(target=Proxy.__proxywork,args=(prox.get('ip'),prox.get('port'),prox.get('ip_data')))
+            t = Proxy.__ReturnValueThread(target=Proxy.__proxywork,args=(prox.get('ip'),prox.get('port'),prox.get('ip_data'),self.__options.get('protocol')))
             t.start()
             self.__threads.append(t)
         while len(self.__threads)>0:
@@ -106,8 +106,9 @@ class Proxy():
                         self.host = host
                         self.port  = int(port)
                         self.proxy_data=ip_data
-                        
-                    self.__threads.remove(t)
+                        self.__threads.clear()
+                    else:
+                        self.__threads.remove(t)
     
     def __str__(self):
         return self.getProxy()
