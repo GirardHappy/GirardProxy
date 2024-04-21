@@ -8,7 +8,7 @@ setup(
     description = ("Python module that scrape and retrive working proxy addresses"),
     license = "MIT",
     keywords = "proxy scraper",
-    packages=find_packages('srcpython setup.py sdist bdist_wheel'),
+    packages=find_packages('src'),
     long_description="""A module that offer you the possibility to create an object that continuosly request proxies addresses, verify if they work using multithreading and retrive to you one of them <3""",
     install_requires=[
           'requests[socks]'
