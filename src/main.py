@@ -1,4 +1,3 @@
-#pip install -U 'requests[socks]'
 import requests,threading,time
 
 class ProxyScraper():
